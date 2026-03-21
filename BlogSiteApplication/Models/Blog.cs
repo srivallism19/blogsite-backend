@@ -12,7 +12,7 @@ namespace UserBlogSite.Models
         [Required, MinLength(20, ErrorMessage = "Category should be minimum of 20 characters")]
         public string Category { get; set; }
 
-        [Required, MinLength(100, ErrorMessage = "Article should be minimum of 100 characters")]
+        [Required, MinLength(10, ErrorMessage = "Article should be minimum of 10 characters")]
         public string Article { get; set; }
 
         [Required]
