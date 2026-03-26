@@ -21,11 +21,16 @@ namespace UserBlogSite.Services
         /// <Summary>
         /// UserRegister
         /// </Summary>
-        public async Task<int> UserRegisterAsync(User user)
+        public async Task<string> UserRegisterAsync(User user)
         {
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            var res = await _userRepository.UserRegisterAsync(user);
-            return res;
+            var usersCount = await _userRepository.CheckUserExistsAsync(user);
+            if (usersCount == 0)
+            {
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                var res = await _userRepository.UserRegisterAsync(user);
+                return res >0 ? "User is registered successfully" : "User Registration is failed. Please try again";
+            }
+            return "User already exists";
         }
 
         /// <Summary>

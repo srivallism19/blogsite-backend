@@ -5,7 +5,7 @@ namespace UserBlogSite.Interfaces.Services
 {
     public interface IUserService
     {
-        Task<int> UserRegisterAsync(User user);
+        Task<string> UserRegisterAsync(User user);
         Task<LoginInfo> UserLoginAsync(string userEmail, string password);
         Task<IList<Blog>> GetAllBlogsAsync(int userId);
         Task<string> DeleteBlogAsync(string blogName, int authorId);

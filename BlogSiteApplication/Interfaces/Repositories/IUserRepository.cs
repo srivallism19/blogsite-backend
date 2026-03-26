@@ -5,6 +5,7 @@ namespace UserBlogSite.Interfaces.Repositories
 {
     public interface IUserRepository
     {
+        Task<int> CheckUserExistsAsync(User user);
         Task<int> UserRegisterAsync(User user);
         Task<User> UserLoginAsync(string userEmail);
         Task<IList<Blog>> GetAllBlogsAsync(int userId);

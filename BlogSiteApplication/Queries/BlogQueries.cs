@@ -10,10 +10,10 @@
         public static string UpdateBlog = @"update Blog set BlogName = @BlogName, Category = @Category, Article = @Article
                                             where AuthorId = @AuthorId and BlogId = @BlogId";
 
-        public static string GetAllBlogs = @"select b.* from Blog b inner join UserDetails ud on b.AuthorId = ud.UserId where b.AuthorId = @UserId";
+        public static string GetAllBlogs = @"select b.BlogId, b.BlogName, b.Category,b.Article, b.AuthorId, ud.UserName as AuthorName, b.CreatedDateTime from Blog b inner join UserDetails ud on b.AuthorId = ud.UserId where b.AuthorId = @UserId";
 
-        public static string GetBlogsOnCategory = @"select * from Blog where Category = @Category";
+        public static string GetBlogsOnCategory = @"select b.BlogId, b.BlogName, b.Category,b.Article, b.AuthorId, ud.UserName as AuthorName, b.CreatedDateTime from Blog b inner join UserDetails ud on b.AuthorId = ud.UserId where b.Category=@Category";
 
-        public static string GetBlogsOnCategoryDuration = @"select * from Blog where Category = @Category and CreatedDateTime between @StartDate and @EndDate";
+        public static string GetBlogsOnCategoryDuration = @"select b.BlogId, b.BlogName, b.Category,b.Article, b.AuthorId, ud.UserName as AuthorName, b.CreatedDateTime from Blog b inner join UserDetails ud on b.AuthorId = ud.UserId where b.Category=@Category and b.CreatedDateTime between @StartDate and @EndDate";
     }
 }

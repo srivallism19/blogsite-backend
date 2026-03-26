@@ -6,5 +6,7 @@
                                                 values(@UserName, @UserEmail, @Password)";
 
         public static string UserLogin = @"select UserId, UserName, EmailId as UserEmail, PasswordHash as Password from UserDetails where EmailId = @UserEmail";
+
+        public static string CheckUserExists = @"select * from UserDetails where EmailId = @UserEmail";
     }
 }

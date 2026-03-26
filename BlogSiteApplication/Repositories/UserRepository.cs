@@ -24,6 +24,19 @@ namespace UserBlogSite.Repositories
         }
 
         /// <Summary>
+        /// CheckUserExistsAsync
+        /// </Summary>
+        public async Task<int> CheckUserExistsAsync(User user)
+        {
+            var res = await _dapperHelper.QueryAsync<User>(UserQueries.CheckUserExists, user);
+            if(res != null)
+            {
+                return res.Count();
+            }
+            return 0;
+        }
+
+        /// <Summary>
         /// UserRegister
         /// </Summary>
         public async Task<User> UserLoginAsync(string userEmail)
